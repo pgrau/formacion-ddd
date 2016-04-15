@@ -2,7 +2,6 @@
 
 namespace Training\Application\Service\User\Access;
 
-use Training\Application\Service\User\Create\CreateUserServiceException;
 use Training\Domain\Model\User\Identity\User;
 use Training\Domain\Model\User\Identity\UserRepository;
 
@@ -28,6 +27,7 @@ final class AuthenticateUserService
             return new AuthenticateUserResponse($user);
 
         } catch (\Exception $exception) {
+            var_dump($exception->getMessage());
             throw new AuthenticateUserServiceException($exception->getMessage());
         }
     }

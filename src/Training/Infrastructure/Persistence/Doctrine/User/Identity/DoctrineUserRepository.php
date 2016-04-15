@@ -21,5 +21,6 @@ class DoctrineUserRepository extends EntityRepository implements UserRepository
         if (is_null($user)) {
             throw new DoctrineUserRepositoryException('User not found');
         }
+        return $user;
     }
 }
