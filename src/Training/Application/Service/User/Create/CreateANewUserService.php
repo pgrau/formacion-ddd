@@ -13,8 +13,8 @@ final class CreateANewUserService
 {
     /**
      * @var UserRepository
-     */
-    private $userRepository;
+     */private $userRepository;
+    
 
     public function __construct(UserRepository $userRepository)
     {

@@ -32,6 +32,14 @@ class User
        $this->passwordHash = $credentials->password();
     }
 
+    /**
+     * @return mixed
+     */
+    public function passwordHash()
+    {
+        return $this->passwordHash;
+    }
+
     public function encryptPassword($password, $algorithm, callable $createHash)
     {
         $this->passwordHash = $createHash($password, $algorithm);
@@ -42,6 +50,14 @@ class User
     public function confirmPassword($password, $confirmPassword)
     {
         $this->assertSame($password, $confirmPassword, 'Password and confirm password must be equal');
+    }
+
+    public function authenticate($password, $passwordHash, callable $verify)
+    {
+        if (!$verify($password, $passwordHash)) {
+            throw new UserException('Incorrect password');
+        }
+        return true;
     }
 
     public function name()

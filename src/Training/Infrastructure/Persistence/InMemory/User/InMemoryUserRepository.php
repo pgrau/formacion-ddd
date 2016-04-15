@@ -11,4 +11,9 @@ class InMemoryUserRepository implements UserRepository
     {
         return $user;
     }
+
+    public function findOneByUsername(string $username)
+    {
+        // TODO: Implement findOneByUsername() method.
+    }
 }
